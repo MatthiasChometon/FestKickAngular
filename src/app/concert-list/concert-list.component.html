@@ -1,0 +1,6 @@
+<p>Listes des concerts</p>
+<div *ngIf="concerts">
+    <div *ngFor="let concert of concerts.results">
+        <app-concert-view [concertInfos]="concert"></app-concert-view>
+    </div>
+</div>
