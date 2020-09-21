@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SongKickApiService } from '../song-kick-api.service';
 import * as L from 'leaflet';
 
@@ -14,7 +14,7 @@ export class ConcertListComponent implements AfterViewInit  {
   concerts: any;
   mapActivated: boolean = false;
 
-  constructor(private songKickApi: SongKickApiService, private route: ActivatedRoute) { }
+  constructor(private songKickApi: SongKickApiService, private route: ActivatedRoute, private router: Router) { }
   ngAfterViewInit(): void {
     this.route
     .queryParams
@@ -57,9 +57,7 @@ export class ConcertListComponent implements AfterViewInit  {
 
         for (let concert of concerts.results) {
           L.marker([position.coords.latitude + getRandomInt(10) * 0.01, position.coords.longitude  + getRandomInt(10) * 0.01]).addTo(mymap)
-          .bindPopup("<b>Le concert :</b><br />" + concert.name).on('click', function(e) {
-            showDescription(concert.name);
-        });
+          .bindPopup('<b>Le concert :</b><br />' + concert.name + '</b><br /><button (Click)="showDescription(' + concert.name + ');">plus d\'informations</button>');
           //var popup = L.popup();
         }
 
@@ -67,18 +65,6 @@ export class ConcertListComponent implements AfterViewInit  {
           return Math.floor(Math.random() * Math.floor(max));
         }
 
-        // if(this.concerts) {
-           //console.log(this.concerts);
-        // }
-        // console.log(typeof this.mapActivated);
-        // if(this.concerts == null) {
-        //   this.concerts = "";
-        // }
-
-        // console.log(this.concerts);
-
-        
-      
         // function onMapClick(e) {
         //   popup
         //     .setLatLng(e.latlng)
@@ -89,12 +75,10 @@ export class ConcertListComponent implements AfterViewInit  {
         // mymap.on('click', onMapClick);
       });
 
-      function showDescription(concertName) {
-        this.router.navigate(['description'], { queryParams: { concert: concertName } });
-      }
-
     // }
   } 
-
-
+  
+  showDescription(concertName) {
+    this.router.navigate(['description'], { queryParams: { concert: concertName } });
+  }
 }
