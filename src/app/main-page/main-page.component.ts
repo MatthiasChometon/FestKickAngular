@@ -10,7 +10,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 })
 export class MainPageComponent implements OnInit {
 
-  concertName: string = "";
+  concertCity: string = "";
   concert: any = {}
 
   constructor(private router: Router) { }
@@ -20,10 +20,7 @@ export class MainPageComponent implements OnInit {
   }
 
   searchConcert() {
-    if(!this.concertName) {
-      this.concertName = "";
-    }
-    this.router.navigate(['list'], { queryParams: { concert: this.concertName } });
+    this.router.navigate(['list'], { queryParams: { city: this.concertCity } });
   }
 
 }

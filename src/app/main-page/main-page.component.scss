@@ -1,11 +1,19 @@
 .example-form-field {
     width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .songKickCard {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
+  }
+
+  .songKickCardEnd {
+    height: 50px;
+    bottom: 20px;
+    position: sticky;
   }
 
 .iconSongKick {

@@ -1,5 +1,4 @@
-<p>Listes des concerts</p>
-<button (click)="displayMap()">Afficher map</button>
+<button class="mapButton" (click)="displayMap()" mat-stroked-button color="warn">Afficher map</button>
 <div *ngIf="mapActivated">
     <div id="map"></div>
 </div>

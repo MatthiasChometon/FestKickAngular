@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class ConcertViewComponent implements OnInit {
 
+  panelOpenState = false;
+
   @Input()
   concertInfos: any;
 

@@ -1,15 +1,16 @@
 <div>
-    <p>concert informations</p>
-    <div *ngIf="concert">
-      
-
-        <!-- <p>{{ concert.name }}</p>
-        <img [src]="concert.sprites.front_default" alt="pokemon-front-defaut">
-        <img [src]="concert.sprites.back_default" alt="pokemon-back-defaut">
-
-        <p>Shiny version :</p> 
-
-        <img [src]="concert.sprites.front_shiny" alt="pokemon-front-shiny">
-        <img [src]="concert.sprites.back_shiny" alt="pokemon-back-shiny"> -->
-    </div>
+    <mat-card *ngIf="concert">
+        <mat-list>
+            <mat-list-item>{{ concert.resultsPage.results.event.displayName }}</mat-list-item>
+            <mat-list-item>Localisation : {{ concert.resultsPage.results.event.location.city }}</mat-list-item>
+            <mat-list-item>Horaires : {{ concert.resultsPage.results.event.start.datetime }} </mat-list-item>
+            <mat-list-item>Restriction d'age : {{ concert.resultsPage.results.event.ageRestriction }}</mat-list-item>
+            <p>Artiste du concert :</p>
+            <div *ngFor="let artist of concert.resultsPage.results.event.performance | keyvalue">
+                <mat-list-item>Artiste : {{ artist[artist.key] }} </mat-list-item>
+            </div>
+            <mat-list-item>Description du concert : {{ concert.resultsPage.results.event.venue.description }}
+            </mat-list-item>
+        </mat-list>
+    </mat-card>
 </div>

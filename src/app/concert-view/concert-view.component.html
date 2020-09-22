@@ -1,7 +1,12 @@
-concert :
-<div *ngIf="concertInfos">
-   <p>artist : {{ concertInfos.displayName }}</p> 
-   <p>ville : {{ concertInfos.location.city }}</p>
-   <p>date : {{ concertInfos.start.date }}</p>
-</div>
-<button (click)="moreConcertInformations(concertInfos.displayName)">plus d'informations</button>
+<mat-accordion *ngIf="concertInfos">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+             {{ concertInfos.displayName }}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>ville : {{ concertInfos.location.city }}</p>
+        <p>date : {{ concertInfos.start.date }}</p>
+        <button (click)="moreConcertInformations(concertInfos.id)" mat-stroked-button color="warn">plus d'informations</button>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -9,7 +9,8 @@ import { SongKickApiService } from '../song-kick-api.service';
 })
 export class ConcertDescriptionComponent implements OnInit {
 
-  concert: any = "";
+  concert: any;
+  concertName: string = "";
 
   constructor(private route: ActivatedRoute, private songKickApi: SongKickApiService) {}
 
@@ -17,12 +18,13 @@ export class ConcertDescriptionComponent implements OnInit {
     this.route
     .queryParams
     .subscribe(params => {
+      this.concertName = params.concert;
       this.searchConcert(params.concert);
     });
   }
 
   searchConcert(concertInfos) {
-    this.songKickApi.getConcert(concertInfos).subscribe((data)=>{
+    this.songKickApi.getConcertDetails(concertInfos).subscribe((data)=>{
       this.concert = data;
     });
   }

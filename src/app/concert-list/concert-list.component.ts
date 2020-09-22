@@ -18,7 +18,7 @@ export class ConcertListComponent implements AfterViewInit  {
     this.route
     .queryParams
     .subscribe(params => {
-      this.getConcert(params.concert);
+      this.getCityConcert(params.city);
     });
    }
 
@@ -26,12 +26,14 @@ export class ConcertListComponent implements AfterViewInit  {
 
   }
 
-  getConcert(concertName) {
-    if(!concertName) {
-      concertName = "";
+  getCityConcert(city) {
+    if(!city) {
+      city = "";
     }
-    this.songKickApi.getConcert(concertName).subscribe((data)=>{
-      this.concerts = data;
+    this.songKickApi.getCity(city).subscribe((data)=>{
+      this.songKickApi.getConcerts(data['resultsPage']['results']['location'][0]['metroArea']['id']).subscribe((data)=>{
+        this.concerts = data;
+      });;
     });
   }
 
