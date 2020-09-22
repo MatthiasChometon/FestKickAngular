@@ -2,6 +2,11 @@
 <div *ngIf="mapActivated">
     <div id="map"></div>
 </div>
+<div class="errorContainer" *ngIf="error == true">
+    <mat-divider></mat-divider>
+    <mat-list-item class="errorList">Il y a une faute dans votre nom de ville</mat-list-item>
+    <mat-divider></mat-divider>
+</div>
 <div *ngIf="concerts">
     <div *ngFor="let concert of concerts.resultsPage.results.event | keyvalue">
         <app-concert-view [concertInfos]="concerts.resultsPage.results.event[concert.key]"></app-concert-view>

@@ -16,7 +16,6 @@ export class MainPageComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.searchConcert();
   }
 
   searchConcert() {

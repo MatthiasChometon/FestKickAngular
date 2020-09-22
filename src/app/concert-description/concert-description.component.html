@@ -4,12 +4,16 @@
             <mat-list-item>{{ concert.resultsPage.results.event.displayName }}</mat-list-item>
             <mat-list-item>Localisation : {{ concert.resultsPage.results.event.location.city }}</mat-list-item>
             <mat-list-item>Horaires : {{ concert.resultsPage.results.event.start.datetime }} </mat-list-item>
-            <mat-list-item>Restriction d'age : {{ concert.resultsPage.results.event.ageRestriction }}</mat-list-item>
-            <p>Artiste du concert :</p>
-            <div *ngFor="let artist of concert.resultsPage.results.event.performance | keyvalue">
-                <mat-list-item>Artiste : {{ artist[artist.key] }} </mat-list-item>
-            </div>
-            <mat-list-item>Description du concert : {{ concert.resultsPage.results.event.venue.description }}
+            <mat-list-item *ngIf="concert.resultsPage.results.event.ageRestriction">Restriction d'age :
+                {{ concert.resultsPage.results.event.ageRestriction }}</mat-list-item>
+            <mat-list-item>Artistes :</mat-list-item>
+            <mat-list-item *ngFor="let artist of concert.resultsPage.results.event.performance | keyvalue">
+                <mat-list-item>
+                    {{ artist.value.displayName }}
+                </mat-list-item>
+            </mat-list-item>
+            <mat-list-item *ngIf="concert.resultsPage.results.event.venue.description">Description du concert :
+                {{ concert.resultsPage.results.event.venue.description }}
             </mat-list-item>
         </mat-list>
     </mat-card>

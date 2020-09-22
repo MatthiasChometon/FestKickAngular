@@ -17,6 +17,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatExpansionModule} from '@angular/material/expansion'; 
 import {MatListModule} from '@angular/material/list'; 
+import {MatDividerModule} from '@angular/material/divider'; 
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatListModule} from '@angular/material/list';
     MatCardModule,
     MatButtonModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
