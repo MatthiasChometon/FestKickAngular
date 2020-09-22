@@ -22,9 +22,9 @@ export class ConcertDescriptionComponent implements OnInit {
   }
 
   searchConcert(concertInfos) {
-    // this.songKickApi.getConcert(concertInfos).subscribe((data)=>{
-    //   this.concert = data;
-    // });
+    this.songKickApi.getConcert(concertInfos).subscribe((data)=>{
+      this.concert = data;
+    });
   }
 
 }

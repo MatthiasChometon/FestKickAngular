@@ -1,2 +1,7 @@
-<p *ngIf="concertInfos">{{ concertInfos.name }}</p>
-<button (click)="moreConcertInformations(concertInfos.name)">plus d'informations</button>
+concert :
+<div *ngIf="concertInfos">
+   <p>artist : {{ concertInfos.displayName }}</p> 
+   <p>ville : {{ concertInfos.location.city }}</p>
+   <p>date : {{ concertInfos.start.date }}</p>
+</div>
+<button (click)="moreConcertInformations(concertInfos.displayName)">plus d'informations</button>

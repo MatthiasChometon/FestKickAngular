@@ -1,9 +1,14 @@
-<button><a routerLink="/">Accueil</a></button>
-<input class="input-filter" [(ngModel)]="concertName"  placeholder="Entrez le nom d'une ville"/>
-<button (click)="searchConcert()">search</button>
+<mat-card class="songKickCard">
+    <img class="iconSongKick" routerLink="/" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Songkick_logo.svg/1200px-Songkick_logo.svg.png" alt="">
+    <mat-form-field class="example-form-field">
+        <mat-label>Clearable input</mat-label>
+        <input matInput type="text" [(ngModel)]="concertName">
+        <button mat-button *ngIf="concertName" matSuffix mat-icon-button aria-label="Clear" (click)="value=''"
+            placeholder="Entrez le nom d'une ville">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <button (click)="searchConcert()">search</button>
+</mat-card>
 
-<!-- <mat-toolbar color = "gray">
-    <span class="gap"><button><a routerLink="/">Home</a></button></span>
-    <span>Localisation</span>
-</mat-toolbar>  -->
 <router-outlet></router-outlet>
