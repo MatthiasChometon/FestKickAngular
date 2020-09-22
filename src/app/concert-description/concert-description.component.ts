@@ -15,6 +15,7 @@ export class ConcertDescriptionComponent implements OnInit {
   constructor(private route: ActivatedRoute, private songKickApi: SongKickApiService) {}
 
   ngOnInit() {
+    //récupère le nom du concert
     this.route
     .queryParams
     .subscribe(params => {
@@ -22,7 +23,7 @@ export class ConcertDescriptionComponent implements OnInit {
       this.searchConcert(params.concert);
     });
   }
-
+  //va chercher via le service d'api des détails sur le concert
   searchConcert(concertInfos) {
     this.songKickApi.getConcertDetails(concertInfos).subscribe((data)=>{
       this.concert = data;
