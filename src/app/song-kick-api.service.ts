@@ -13,7 +13,8 @@ export class SongKickApiService {
   // }
 
   public getConcert(concert: string){
-    return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/` + concert);
+    // return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/` + concert);
+    return this.httpClient.get(`assets/events.json`);
   }
   
 }

@@ -4,7 +4,10 @@
     <div id="map"></div>
 </div>
 <div *ngIf="concerts">
-    <div *ngFor="let concert of concerts.results">
-        <app-concert-view [concertInfos]="concert"></app-concert-view>
-    </div>
+    <!-- {{ concerts | json }} -->
+    {{ concerts.resultsPage.results.event[0].displayName }}
+    <!-- <div *ngFor="let concert of concerts.resultsPage.results">
+        fezf -->
+        <!-- <app-concert-view [concertInfos]="concert"></app-concert-view> -->
+    <!-- </div> -->
 </div>

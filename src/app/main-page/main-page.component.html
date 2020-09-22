@@ -1,4 +1,9 @@
 <button><a routerLink="/">Accueil</a></button>
-<input [(ngModel)]="concertName"/>
+<input class="input-filter" [(ngModel)]="concertName"  placeholder="Entrez le nom d'une ville"/>
 <button (click)="searchConcert()">search</button>
+
+<!-- <mat-toolbar color = "gray">
+    <span class="gap"><button><a routerLink="/">Home</a></button></span>
+    <span>Localisation</span>
+</mat-toolbar>  -->
 <router-outlet></router-outlet>

@@ -14,13 +14,16 @@ export class ConcertListComponent implements AfterViewInit  {
   concerts: any;
   mapActivated: boolean = false;
 
-  constructor(private songKickApi: SongKickApiService, private route: ActivatedRoute, private router: Router) { }
-  ngAfterViewInit(): void {
+  constructor(private songKickApi: SongKickApiService, private route: ActivatedRoute, private router: Router) {
     this.route
     .queryParams
     .subscribe(params => {
       this.getConcert(params.concert);
     });
+   }
+
+  ngAfterViewInit(): void {
+
   }
 
   getConcert(concertName) {
@@ -40,7 +43,6 @@ export class ConcertListComponent implements AfterViewInit  {
   }
   
   createMap() {
-    // if(this.mapActivated == true) {
       var concerts = this.concerts;
       navigator.geolocation.getCurrentPosition(function(position) {
         var mymap = L.map('map').setView([position.coords.latitude, position.coords.longitude], 12);
@@ -57,25 +59,13 @@ export class ConcertListComponent implements AfterViewInit  {
 
         for (let concert of concerts.results) {
           L.marker([position.coords.latitude + getRandomInt(10) * 0.01, position.coords.longitude  + getRandomInt(10) * 0.01]).addTo(mymap)
-          .bindPopup('<b>Le concert :</b><br />' + concert.name + '</b><br /><button (Click)="showDescription(' + concert.name + ');">plus d\'informations</button>');
-          //var popup = L.popup();
+          .bindPopup('<b>Le concert :</b><br />' + concert.name + '</b><br /><button (click)="showDescription(' + concert.name + ');">plus d\'informations</button>');
         }
 
         function getRandomInt(max) {
           return Math.floor(Math.random() * Math.floor(max));
         }
-
-        // function onMapClick(e) {
-        //   popup
-        //     .setLatLng(e.latlng)
-        //     .setContent("You clicked the map at " + e.latlng.toString())
-        //     .openOn(mymap);
-        // }
-      
-        // mymap.on('click', onMapClick);
       });
-
-    // }
   } 
   
   showDescription(concertName) {
